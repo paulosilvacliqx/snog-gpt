@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - production
+      - homolog
+      - development
+    
+env:
+  BUCKET: tripness-frontend
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+          
+      - name: Install dependencies
+        run: yarn install
+        
+      # - name: Run tests
+      #run: yarn test --watchAll false
+        
+      - name: Build
+        run: yarn build
+        
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+          
+      - name: Upload files to bucket
+        run: gsutil -m rsync -R ./dist gs://"$BUCKET-${{ steps.extract_branch.outputs.branch }}"
+        
+      - name: Allow AllUsers
+        run: gsutil -m acl ch -R -u AllUsers:R gs://"$BUCKET-${{ steps.extract_branch.outputs.branch }}"
+
+      - name: Set Cache-Control
+        run: gsutil -m setmeta -h "Cache-Control:public, max-age=1576800" gs://"$BUCKET-${{ steps.extract_branch.outputs.branch }}"/**/*.{css,js}
+        
+      - name: Set Cache-Control
+        run: gsutil -m setmeta -h "Cache-Control:no-cache, no-store" gs://"$BUCKET-${{ steps.extract_branch.outputs.branch }}"/index.html

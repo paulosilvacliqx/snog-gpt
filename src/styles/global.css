@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gotham Rounded normal */
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/src/assets/fonts/GothamRounded/eot/GothamRounded-Medium.otf");
+  src: url("/src/assets/fonts/GothamRounded/ttf/GothamRoundedMedium_21022.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Gotham Rounded light */
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/src/assets/fonts/GothamRounded/eot/GothamRounded-Light.otf");
+  src: url("/src/assets/fonts/GothamRounded/ttf/GothamRoundedLight_21020.ttf")
+    format("truetype");
+  font-weight: 350;
+}
+
+/* Gotham Rounded light 2 */
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/src/assets/fonts/GothamRounded/eot/Gotham-XLight.otf");
+  font-weight: 300;
+}
+
+/* Gotham Rounded bold */
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/src/assets/fonts/GothamRounded/eot/GothamRounded-Bold.otf");
+  src: url("/src/assets/fonts/GothamRounded/ttf/GothamRoundedBold_21016.ttf")
+    format("truetype");
+  font-weight: bold;
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar:vertical {
+    width: 10px;
+    border: 2px solid #ffff;
+    border-radius: 8px;
+    background: #00000029;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    width: 5px;
+    border: 2px solid #78c6bf;
+    border-radius: 8px;
+    background-color: #78c6bf !important;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #543f92 inset;
+  -webkit-text-fill-color: white;
+  transition: all;
+  transition-duration: 400ms;
+}
+
+body {
+  background: black !important;
+}
+
+.card-body p {
+  font-size: 14px !important;
+}
+
+.h4 {
+  font-size: 1rem !important;
+}
+
+.card-body div {
+  font-size: 14px !important;
+}
+
+.card-body button {
+  font-size: 14px !important;
+}
+
+.card-body {
+  font-size: 14px !important;
+}
+
+.wc-buttonDiv {
+  z-index: 100;
+}
