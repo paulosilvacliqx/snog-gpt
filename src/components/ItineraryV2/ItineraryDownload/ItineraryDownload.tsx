@@ -106,44 +106,39 @@ export const ItineraryDownload = () => {
         </Styles.Content>
       </Styles.Container>
       <Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="w-screen h-screen bg-black/80 fixed inset-0" />
-          <Dialog.Content className="fixed  w-9/12 mt-8 mb-8 bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll scrollbar">
-            <Styles.ModalActions>
-              <Styles.Button onClick={handleDownload}>Baixar</Styles.Button>
-              <Dialog.Close>
-                <X
-                  size={24}
-                  weight="bold"
-                  aria-label="Fechar"
-                  onClick={handleCloseModal}
-                />
-              </Dialog.Close>
-            </Styles.ModalActions>
-            <Dialog.Description>
-              <Styles.ModalContainer>
-                <Styles.ModalContent ref={componentRef}>
-                  <img src={Image3} alt="Imagem 3" style={{ marginTop: 74 }} />
-                  <Styles.Text style={{ marginTop: 48 }}>
-                    Aqui está seu roteiro de viagem. Com base nas suas
-                    preferências:
-                  </Styles.Text>
-                  {data.map((item: ResumeList, idx: number) => (
-                    <>
-                      <Styles.Text
-                        style={{ marginTop: 48 }}
-                      >{`DIA ${sanitizeNumber(idx + 1)}`}</Styles.Text>
+        <Dialog.Overlay className="w-screen h-screen bg-black/80 fixed inset-0" />
+        <Dialog.Content className="fixed  h-[80vh] w-9/12 mt-8 mb-8 bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll scrollbar">
+          <Styles.ModalActions>
+            <Styles.Button onClick={handleDownload}>Baixar</Styles.Button>
+            <Dialog.Close>
+              <X
+                size={24}
+                weight="bold"
+                aria-label="Fechar"
+                onClick={handleCloseModal}
+              />
+            </Dialog.Close>
+          </Styles.ModalActions>
+          <Styles.ModalContainer>
+            <Styles.ModalContent ref={componentRef}>
+              <img src={Image3} alt="Imagem 3" style={{ marginTop: 74 }} />
+              <Styles.Text style={{ marginTop: 48 }}>
+                Aqui está seu roteiro de viagem. Com base nas suas preferências:
+              </Styles.Text>
+              {data.map((item: ResumeList, idx: number) => (
+                <>
+                  <Styles.Text style={{ marginTop: 48 }}>{`DIA ${sanitizeNumber(
+                    idx + 1
+                  )}`}</Styles.Text>
 
-                      {item.resume.map((res: string) => (
-                        <Styles.Text key={uniqueId()}>{res}</Styles.Text>
-                      ))}
-                    </>
+                  {item.resume.map((res: string) => (
+                    <Styles.Text key={uniqueId()}>{res}</Styles.Text>
                   ))}
-                </Styles.ModalContent>
-              </Styles.ModalContainer>
-            </Dialog.Description>
-          </Dialog.Content>
-        </Dialog.Portal>
+                </>
+              ))}
+            </Styles.ModalContent>
+          </Styles.ModalContainer>
+        </Dialog.Content>
       </Dialog.Root>
     </>
   );
