@@ -13,6 +13,7 @@ import Movie3 from "../assets/movie/step3/movie-3.mov";
 import Movie4 from "../assets/movie/step3/movie-4.mov";
 import { useContext, useEffect } from "react";
 import { ItineraryContext } from "../../../contexts/ContextsFiles/Itinerary";
+import { MobileItems } from "./Mobile/Items";
 
 const barImage: any = {
   0: Box1,
@@ -112,6 +113,7 @@ export const Step3 = () => {
           </Styles.Column>
         </Styles.Row>
       </Styles.Content>
+      <MobileItems onSelected={handleNextStep} />
     </Styles.Container>
   );
 };
