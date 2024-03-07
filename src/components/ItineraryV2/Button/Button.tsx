@@ -25,4 +25,8 @@ export const Button = styled.button`
     color: #c1c1c1;
     border: none;
   }
+
+  ${"@media only screen and (max-width:819px)"} {
+    width: 100%;
+  }
 `;

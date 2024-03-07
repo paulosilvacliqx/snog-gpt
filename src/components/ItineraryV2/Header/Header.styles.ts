@@ -7,6 +7,10 @@ export const Container = styled.div`
   justify-content: space-between;
   background-color: transparent;
   padding-top: 38px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 24px;
+  }
 `;
 
 export const Button = styled.div`

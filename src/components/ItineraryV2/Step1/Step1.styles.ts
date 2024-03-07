@@ -23,6 +23,10 @@ export const Container = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+
+  ${"@media only screen and (max-width:819px)"} {
+    height: 100%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -33,6 +37,11 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 60px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+    margin-top: 20px;
+  }
 `;
 
 export const SubTitle = styled.h4`
@@ -44,6 +53,15 @@ export const SubTitle = styled.h4`
   margin-bottom: 30px;
   text-align: center;
   font-family: "Inter";
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 18px;
+    padding: 0 24px;
+
+    br {
+      display: none;
+    }
+  }
 `;
 
 export const TravelMovie = styled.section<{
@@ -90,6 +108,7 @@ export const BackgroundShadow = styled.div`
 export const Bar = styled.div<{ height: number; backgroundImage: any }>`
   display: flex;
   background-image: url(${({ backgroundImage }) => backgroundImage});
+
   width: 80px;
   align-items: center;
   justify-content: center;
@@ -254,6 +273,10 @@ export const WrapperBar = styled.div<{ left: number }>`
       animation: 0.5s ${fadeInButton} forwards;
       display: block;
     }
+  }
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: none;
   }
 `;
 

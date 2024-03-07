@@ -11,7 +11,15 @@ export const Container = styled.div`
   background-attachment: fixed;
   background-position: center;
   padding: 30px 0;
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 `;
+
+export const Info = styled.div``;
 
 export const Title = styled.h1`
   font-family: "Gotham Rounded";
@@ -21,6 +29,11 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 140px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    margin-top: 64px;
+    font-size: 32px;
+  }
 `;
 
 export const Subtitle = styled.div`
@@ -34,6 +47,11 @@ export const Subtitle = styled.div`
     margin-left: 20px;
     margin-right: 20px;
   }
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 20px;
+    margin: 0 10px;
+  }
 `;
 
 export const Content = styled.div`
@@ -43,12 +61,21 @@ export const Content = styled.div`
   justify-content: space-between;
   margin: 90px 0;
   flex: 1;
+
+  ${"@media only screen and (max-width:819px)"} {
+    margin-top: 64px;
+    margin-bottom: 0;
+  }
 `;
 
 export const Line = styled.div`
   border: 1px solid #ffc20e;
   height: 1px;
   width: 15%;
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: none;
+  }
 `;
 
 export const Action = styled.div`
@@ -56,4 +83,8 @@ export const Action = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 0 32px;
+  }
 `;

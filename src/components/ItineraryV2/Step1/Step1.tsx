@@ -22,6 +22,7 @@ import * as Styles from "./Step1.styles";
 import { Header } from "../Header/Header";
 
 import { ItineraryContext } from "../../../contexts/ContextsFiles/Itinerary";
+import { MobileItems } from "./Mobile/Items";
 
 const travelMovie: any = {
   0: Movie2,
@@ -99,37 +100,6 @@ const labelVideoPosition: any = {
   7: 225,
 };
 
-const backgroundSvg = (height: number) => (
-  <svg
-    width="90"
-    height={height + 2}
-    viewBox="0 0 80 408"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect
-      x="-119"
-      y="-72.0625"
-      width="244"
-      height="553"
-      fill="url(#paint0_linear_3373_2435)"
-    />
-    <defs>
-      <linearGradient
-        id="paint0_linear_3373_2435"
-        x1="3"
-        y1="480.938"
-        x2="3"
-        y2="-23.2684"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stop-opacity="0.8" />
-        <stop offset="0.649059" stop-opacity="0" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
 export const Step1 = () => {
   const navigate = useNavigate();
   const { itineraryData, setItineraryData } = useContext(ItineraryContext);
@@ -148,16 +118,13 @@ export const Step1 = () => {
       <Styles.SubTitle>
         Para criar uma experiência personalizada, a IA precisa entender para
         <br />
-        onde você deseja viajar
+        {` onde você deseja viajar`}
       </Styles.SubTitle>
       <Styles.Content>
         {barList.map((item, idx) => (
           <Styles.WrapperBar key={uniqueId()} left={labelVideoPosition[idx]}>
             <Styles.Bar height={item.barHeight} backgroundImage={barImage[idx]}>
               <Styles.Label>{item.label}</Styles.Label>
-              <Styles.BackgroundShadow>
-                {backgroundSvg(item.barHeight)}
-              </Styles.BackgroundShadow>
             </Styles.Bar>
             <Styles.TravelMovie height={item.barHeight}>
               <video
@@ -180,6 +147,7 @@ export const Step1 = () => {
             </Styles.TravelMovie>
           </Styles.WrapperBar>
         ))}
+        <MobileItems onSelected={handleNextStep} />
       </Styles.Content>
     </Styles.Container>
   );

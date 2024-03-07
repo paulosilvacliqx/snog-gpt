@@ -13,22 +13,23 @@ export const ItineraryV2 = () => {
 
   return (
     <Styles.Container>
-      <Styles.Title>
-        CRIE SEU ROTEIRO <br />
-        INTELIGENTE
-      </Styles.Title>
-      <Styles.Content>
-        <Styles.Line />
-        <Styles.Subtitle>
-          PARA COMEÇAROlá, seja bem vindo!
-          <span style={{ fontSize: 32, marginLeft: 8 }}>&#128522;</span>
-          <br />
-          Conheça experiências incríveis feitas com todo poder do chat GPT e a
-          <br />
-          expertise Snog.
-        </Styles.Subtitle>
-        <Styles.Line />
-      </Styles.Content>
+      <Styles.Info>
+        <Styles.Title>
+          CRIE SEU ROTEIRO <br />
+          INTELIGENTE
+        </Styles.Title>
+        <Styles.Content>
+          <Styles.Line />
+          <Styles.Subtitle>
+            Olá, seja bem vindo!
+            <br />
+            Conheça experiências incríveis feitas com todo poder do chat GPT e a
+            <br />
+            expertise Snog.
+          </Styles.Subtitle>
+          <Styles.Line />
+        </Styles.Content>
+      </Styles.Info>
       <Styles.Action>
         <Button onClick={handleNext}>Começar agora</Button>
       </Styles.Action>
