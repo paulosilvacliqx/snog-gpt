@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import * as Styles from "./ItineraryV2.styles";
 import { Button } from "./Button/Button";
-import { UserDataContext } from "../../contexts/ContextsFiles/UserData";
 
 export const ItineraryV2 = () => {
   const navigate = useNavigate();
-  const { userData } = useContext(UserDataContext);
 
   const handleNext = () => {
     navigate("/roteiro/passo-1");

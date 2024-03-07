@@ -1,6 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { MyScripts } from "./components/MyScripts/MyScripts";
-import { Itinerary } from "./components/Itinerary/Itinerary";
 import { ItineraryV2 } from "./components/ItineraryV2/ItineraryV2";
 import { Step1 } from "./components/ItineraryV2/Step1/Step1";
 import { Step2 } from "./components/ItineraryV2/Step2/Step2";
@@ -26,8 +24,6 @@ export function AppRoutes() {
         <Route path="/roteiro/resume" element={<ItineraryResume />} />
         <Route path="/roteiro/download" element={<ItineraryDownload />} />
         <Route path="/roteiro/adjust" element={<ItineraryAdjust />} />
-        <Route path="/meusroteiros" element={<MyScripts />} />
-        <Route path="/roteiro/:itinerary_id" element={<Itinerary />} />
       </Routes>
     </Router>
   );

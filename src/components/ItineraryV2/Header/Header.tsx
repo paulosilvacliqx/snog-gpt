@@ -1,12 +1,6 @@
-import { FC, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, X } from "phosphor-react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { MenuProfile } from "../../MenuProfile/MenuProfile";
+import { FC } from "react";
+
 import * as Styles from "./Header.styles";
-import { UserDataContext } from "../../../contexts/ContextsFiles/UserData";
-import { RecoverPassword } from "../../RecoverPassword/RecoverPassword";
-import { LoginForm } from "../../LoginForm/LoginForm";
 
 type Props = {
   handleBack?: () => void;
@@ -15,58 +9,7 @@ type Props = {
   setOpenLoginModal?: (openLoginModal: boolean) => void;
 };
 
-export const Header: FC<Props> = ({
-  handleBack,
-  btnLabel,
-  openLoginModal,
-  setOpenLoginModal,
-}) => {
-  const navigate = useNavigate();
-  const {
-    userData,
-    openLogin,
-    setOpenLogin,
-    setEmail,
-    setPassword,
-    setOpenRecoverPassword,
-    openRecoverPassword,
-    recoverSuccess,
-    setRecoverSuccess,
-  } = useContext(UserDataContext);
-
-  useEffect(() => {
-    if (openLoginModal) {
-      setOpenLogin(true);
-    }
-  }, [openLoginModal]);
-
-  const handleRegisterUser = () => {
-    navigate("/cadastro");
-    setOpenLogin(false);
-    setOpenLoginModal && setOpenLoginModal(false);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenLogin(false);
-    setOpenLoginModal && setOpenLoginModal(false);
-    setOpenRecoverPassword(false);
-    setRecoverSuccess(false);
-    setEmail("");
-    setPassword("");
-  };
-
-  const handleBackLogin = () => {
-    setOpenLogin(true);
-    setOpenLoginModal && setOpenLoginModal(true);
-    setOpenRecoverPassword(false);
-    setRecoverSuccess(false);
-  };
-
-  const handleBackRecover = () => {
-    setOpenRecoverPassword(true);
-    setRecoverSuccess(false);
-  };
-
+export const Header: FC<Props> = ({ handleBack, btnLabel }) => {
   return (
     <>
       <Styles.Container>
@@ -159,79 +102,6 @@ export const Header: FC<Props> = ({
           />
         </svg>
       </Styles.Container>
-      <Dialog.Root open={openLogin}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="w-screen h-screen bg-black/50 fixed inset-0" />
-          <Dialog.Content className="absolute w-full max-w-xl h-[34rem] bg-white top-[20%] left-1/2 -translate-x-1/2">
-            {openRecoverPassword ? (
-              <>
-                <ArrowLeft
-                  size={24}
-                  onClick={recoverSuccess ? handleBackRecover : handleBackLogin}
-                  className="cursor-pointer absolute left-6 top-6 text-GL300"
-                  weight="bold"
-                />
-                <Dialog.Close
-                  onClick={handleCloseDialog}
-                  className="absolute right-6 top-6 text-P300"
-                >
-                  <X size={24} weight="bold" aria-label="Fechar" />
-                </Dialog.Close>
-
-                <Dialog.Title className="text-4xl flex items-center justify-center text-P300 leading-tight font-bold pt-16">
-                  Recuperar Senha
-                </Dialog.Title>
-
-                <Dialog.Description className="w-[30rem] mx-12 text-xl text-P300 leading-tight font-light text-center pt-6">
-                  {recoverSuccess ? (
-                    <p>
-                      Agora é só aguardar as instruções para criação de nova
-                      senha em seu e-mail.
-                    </p>
-                  ) : (
-                    <p>
-                      Insira abaixo seu e-mail de acesso ao sistema para receber
-                      instruções de recuperação.
-                    </p>
-                  )}
-                </Dialog.Description>
-
-                <RecoverPassword />
-              </>
-            ) : (
-              <>
-                <Dialog.Close
-                  onClick={handleCloseDialog}
-                  className="absolute right-6 top-6 text-P300"
-                >
-                  <X size={24} aria-label="Fechar" />
-                </Dialog.Close>
-
-                <Dialog.Title className="text-4xl text-P300 leading-tight font-bold text-center pt-6">
-                  Faça seu login
-                </Dialog.Title>
-
-                <Dialog.Description className="w-110 text-xl text-P300 leading-tight font-light text-center pt-6">
-                  Insira abaixo seus dados de acesso para continuar com
-                  experiências incríveis
-                </Dialog.Description>
-
-                <LoginForm />
-
-                <p className="mt-5 font-semibold text-B500 text-base text-center">
-                  Não possui uma conta?&nbsp;
-                  <span
-                    onClick={handleRegisterUser}
-                    className="font-bold underline text-base text-BL300 cursor-pointer"
-                  >
-                    Clique aqui
-                  </span>
-                </p>
-              </>
-            )}
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
     </>
   );
 };

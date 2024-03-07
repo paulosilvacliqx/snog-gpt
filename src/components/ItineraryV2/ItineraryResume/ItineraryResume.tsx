@@ -21,7 +21,6 @@ import Tangram15 from "../assets/resume/tangram-15.png";
 import { ItineraryContext } from "../../../contexts/ContextsFiles/Itinerary";
 import { Button } from "../Button/Button";
 import { saveItineraryByUser } from "../../../services/Itineraries/service";
-import { UserDataContext } from "../../../contexts/ContextsFiles/UserData";
 import { SaveItinerary } from "../../../services/Itineraries/type";
 
 const tangramIconList: any = [
@@ -49,7 +48,6 @@ type ResumeList = {
 
 export const ItineraryResume = () => {
   const navigate = useNavigate();
-  const { userData } = useContext(UserDataContext);
   const { itineraryDataResponse, itineraryData } = useContext(ItineraryContext);
   const [data, setData] = useState<ResumeList[]>([]);
   const [error, setError] = useState(false);
