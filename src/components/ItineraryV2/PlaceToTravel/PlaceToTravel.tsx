@@ -22,28 +22,31 @@ export const PlaceToTravel = () => {
 
   return (
     <Styles.Container>
-      <Header
-        handleBack={() => navigate("/roteiro/passo-1")}
-        btnLabel="Voltar"
-      />
-      <Styles.Title>PARA ONDE IR</Styles.Title>
-      <Styles.Content>
-        <Styles.Subtitle>
-          Escreva um local no campo abaixo em que você deseja visitar. Informe
-          apenas localidades como países, estados ou cidades. Dessa forma, o GPT
-          será certeiro no seu roteiro inteligente.
-        </Styles.Subtitle>
+      <Styles.WrapperPlaceToTravel>
+        <Header
+          handleBack={() => navigate("/roteiro/passo-1")}
+          btnLabel="Voltar"
+        />
+        <Styles.Title>PARA ONDE IR</Styles.Title>
+        <Styles.Content>
+          <Styles.Subtitle>
+            Escreva um local no campo abaixo em que você deseja visitar. Informe
+            apenas localidades como países, estados ou cidades. Dessa forma, o
+            GPT será certeiro no seu roteiro inteligente.
+          </Styles.Subtitle>
 
-        <Styles.WrapperInput>
-          <Styles.Line />
-          <Textarea
-            placeholder="Escreva aqui..."
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <Styles.Line />
-        </Styles.WrapperInput>
-      </Styles.Content>
+          <Styles.WrapperInput>
+            <Styles.Line />
+            <Textarea
+              placeholder="Escreva aqui..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <Styles.Line />
+          </Styles.WrapperInput>
+        </Styles.Content>
+      </Styles.WrapperPlaceToTravel>
+
       {value && (
         <Styles.Action>
           <Button onClick={handleSubmit}>Continuar</Button>

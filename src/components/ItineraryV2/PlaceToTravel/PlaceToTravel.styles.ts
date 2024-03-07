@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Background from "../assets/background-v2.svg";
 
+export const WrapperPlaceToTravel = styled.div``;
+
 export const Container = styled.div`
   background-image: url(${Background});
   width: 100%;
@@ -10,7 +12,12 @@ export const Container = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  padding: 30px 0;
+  ${"@media only screen and (max-width:819px)"} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
 `;
 
 export const Title = styled.h1`
@@ -21,6 +28,11 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 10px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+    margin-top: 20px;
+  }
 `;
 
 export const Subtitle = styled.div`
@@ -30,6 +42,11 @@ export const Subtitle = styled.div`
   text-align: center;
   max-width: 800px;
   margin-top: 24px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 18px;
+    padding: 0 24px;
+  }
 `;
 
 export const Content = styled.div`
@@ -45,6 +62,10 @@ export const WrapperInput = styled.div`
   justify-content: space-between;
   margin: 90px 0;
   flex: 1;
+
+  ${"@media only screen and (max-width:819px)"} {
+    margin: 60px 0;
+  }
 `;
 
 export const Line = styled.div`
@@ -52,6 +73,11 @@ export const Line = styled.div`
   height: 1px;
   width: 15%;
   margin-top: 15px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: none;
+    margin-top: 0;
+  }
 `;
 
 export const Action = styled.div`
@@ -59,4 +85,8 @@ export const Action = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 32px 24px;
+  }
 `;
