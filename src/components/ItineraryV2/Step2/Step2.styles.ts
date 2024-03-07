@@ -10,6 +10,12 @@ export const Container = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 export const Title = styled.h1`
@@ -20,6 +26,11 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 60px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+    margin-top: 20px;
+  }
 `;
 
 export const SubTitle = styled.h4`
@@ -31,6 +42,11 @@ export const SubTitle = styled.h4`
   margin-bottom: 40px;
   text-align: center;
   font-family: "Inter";
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 18px;
+    padding: 0 24px;
+  }
 `;
 
 export const Content = styled.div`
@@ -60,4 +76,19 @@ export const WrapperSlideItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${"@media only screen and (max-width:819px)"} {
+    height: auto;
+  }
+`;
+
+export const Action = styled.div`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 32px 24px;
+  }
 `;

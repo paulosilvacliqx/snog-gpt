@@ -56,54 +56,58 @@ export const Step2 = () => {
 
   return (
     <Styles.Container>
-      <Header
-        handleBack={() => navigate("/roteiro/passo-1")}
-        btnLabel="Voltar"
-      />
-      <Styles.Title>CONTE A DURAÇÃO</Styles.Title>
-      <Styles.SubTitle>Por quanto tempo você deseja viajar?</Styles.SubTitle>
-      <Styles.Content>
-        <Carousel
-          axis="vertical"
-          swipeable
-          emulateTouch
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-          showThumbs={false}
-          infiniteLoop
-          centerMode
-          centerSlidePercentage={50}
-          onChange={handleChange}
-        >
-          {dayNumberList.map((item, idx) => (
-            <Styles.WrapperSlideItem key={uniqueId()}>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.1 }}>
-                {pointerPreviewList(idx + 1, 3)}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.4 }}>
-                {pointerPreviewList(idx + 1, 2)}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.6 }}>
-                {pointerPreviewList(idx + 1, 1)}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ margin: "15px 0" }}>
-                {`${item < 10 ? `0${item}` : item} dias`}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.6 }}>
-                {pointerNextList(idx + 1, 1)}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.4 }}>
-                {pointerNextList(idx + 1, 2)}
-              </Styles.SlideItem>
-              <Styles.SlideItem style={{ fontSize: 32, opacity: 0.1 }}>
-                {pointerNextList(idx + 1, 3)}
-              </Styles.SlideItem>
-            </Styles.WrapperSlideItem>
-          ))}
-        </Carousel>
+      <div>
+        <Header
+          handleBack={() => navigate("/roteiro/local")}
+          btnLabel="Voltar"
+        />
+        <Styles.Title>CONTE A DURAÇÃO</Styles.Title>
+        <Styles.SubTitle>Por quanto tempo você deseja viajar?</Styles.SubTitle>
+        <Styles.Content>
+          <Carousel
+            axis="vertical"
+            swipeable
+            emulateTouch
+            showArrows={false}
+            showStatus={false}
+            showIndicators={false}
+            showThumbs={false}
+            infiniteLoop
+            centerMode
+            centerSlidePercentage={50}
+            onChange={handleChange}
+          >
+            {dayNumberList.map((item, idx) => (
+              <Styles.WrapperSlideItem key={uniqueId()}>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.1 }}>
+                  {pointerPreviewList(idx + 1, 3)}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.4 }}>
+                  {pointerPreviewList(idx + 1, 2)}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.6 }}>
+                  {pointerPreviewList(idx + 1, 1)}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ margin: "15px 0" }}>
+                  {`${item < 10 ? `0${item}` : item} dias`}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.6 }}>
+                  {pointerNextList(idx + 1, 1)}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.4 }}>
+                  {pointerNextList(idx + 1, 2)}
+                </Styles.SlideItem>
+                <Styles.SlideItem style={{ fontSize: 32, opacity: 0.1 }}>
+                  {pointerNextList(idx + 1, 3)}
+                </Styles.SlideItem>
+              </Styles.WrapperSlideItem>
+            ))}
+          </Carousel>
+        </Styles.Content>
+      </div>
+      <Styles.Action>
         <Button onClick={() => handleNextStep()}>Continuar</Button>
-      </Styles.Content>
+      </Styles.Action>
     </Styles.Container>
   );
 };
