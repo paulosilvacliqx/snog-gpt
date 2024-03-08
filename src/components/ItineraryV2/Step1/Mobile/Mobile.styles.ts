@@ -67,7 +67,6 @@ export const WrapperButton = styled.div`
   position: relative;
   margin-bottom: 16px;
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;

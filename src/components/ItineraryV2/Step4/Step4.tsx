@@ -6,6 +6,7 @@ import { Header } from "../Header/Header";
 import { forEach, uniqueId } from "lodash";
 import { Button } from "../Button/Button";
 import { ItineraryContext } from "../../../contexts/ContextsFiles/Itinerary";
+import { MobileItems } from "./Mobile/items";
 
 export const Step4 = () => {
   const navigate = useNavigate();
@@ -320,6 +321,7 @@ export const Step4 = () => {
           </Button>
         </Styles.CanvasTangram>
       </Styles.Content>
+      <MobileItems />
     </Styles.Container>
   );
 };

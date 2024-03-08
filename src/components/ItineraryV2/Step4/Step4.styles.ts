@@ -56,6 +56,10 @@ export const Container = styled.div`
   overflow: auto;
   min-width: 1500px;
   overflow: scroll;
+
+  ${"@media only screen and (max-width:819px)"} {
+    min-width: auto;
+  }
 `;
 
 export const Title = styled.h1`
@@ -66,6 +70,12 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 52px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+    margin-top: 20px;
+    line-height: normal;
+  }
 `;
 
 export const SubTitle = styled.h4`
@@ -77,6 +87,11 @@ export const SubTitle = styled.h4`
   margin-bottom: 40px;
   text-align: center;
   font-family: "Inter";
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 18px;
+    padding: 0 24px;
+  }
 `;
 
 export const Content = styled.div`
@@ -86,6 +101,10 @@ export const Content = styled.div`
 
   ${"@media only screen and (max-width:1270px)"} {
     min-height: 990px;
+  }
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: none;
   }
 `;
 

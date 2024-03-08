@@ -52,6 +52,8 @@ export const Loading = () => {
     setItineraryData,
   } = useContext(ItineraryContext);
 
+  console.log("itineraryData", itineraryData);
+
   const [counter, setCounter] = useState(0);
   const [error, setError] = useState(false);
 
