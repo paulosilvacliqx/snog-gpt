@@ -45,23 +45,16 @@ export const ItineraryDownload = () => {
 
     let resumeItem: ResumeList = { title: "", resume: [] };
     resumeItem.resume = [];
-    console.log("messageSplit", messageSplit);
     messageSplit.forEach((item) => {
-      console.log("item", item);
-
       if (item.includes("Dia")) {
         resumeItem = { title: "", resume: [] };
         const itemSplit = item.split("\n");
-        console.log("itemSplit", itemSplit);
         itemSplit.forEach((day, idx) => {
-          console.log("day", day);
-
           if (idx !== 0) {
             resumeItem.resume.push(day.replace("-", ""));
           }
         });
         newData.push(resumeItem);
-        console.log("resumeItem", resumeItem);
       }
     });
     setData(newData);
@@ -107,38 +100,41 @@ export const ItineraryDownload = () => {
       </Styles.Container>
       <Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
         <Dialog.Overlay className="w-screen h-screen bg-black/80 fixed inset-0" />
-        <Dialog.Content className="fixed  h-[80vh] w-9/12 mt-8 mb-8 bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll scrollbar">
-          <Styles.ModalActions>
-            <Styles.Button onClick={handleDownload}>Baixar</Styles.Button>
-            <Dialog.Close>
-              <X
-                size={24}
-                weight="bold"
-                aria-label="Fechar"
-                onClick={handleCloseModal}
-              />
-            </Dialog.Close>
-          </Styles.ModalActions>
-          <Styles.ModalContainer>
-            <Styles.ModalContent ref={componentRef}>
-              <img src={Image3} alt="Imagem 3" style={{ marginTop: 74 }} />
-              <Styles.Text style={{ marginTop: 48 }}>
-                Aqui está seu roteiro de viagem. Com base nas suas preferências:
-              </Styles.Text>
-              {data.map((item: ResumeList, idx: number) => (
-                <>
-                  <Styles.Text style={{ marginTop: 48 }}>{`DIA ${sanitizeNumber(
-                    idx + 1
-                  )}`}</Styles.Text>
+        <Styles.Dialog>
+          <Dialog.Content className="dialog-content fixed h-[80vh] w-9/12 mt-8 mb-8 bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll scrollbar">
+            <Styles.ModalActions>
+              <Styles.Button onClick={handleDownload}>Baixar</Styles.Button>
+              <Dialog.Close>
+                <X
+                  size={24}
+                  weight="bold"
+                  aria-label="Fechar"
+                  onClick={handleCloseModal}
+                />
+              </Dialog.Close>
+            </Styles.ModalActions>
+            <Styles.ModalContainer>
+              <Styles.ModalContent ref={componentRef}>
+                <Styles.ImgModal src={Image3} alt="Imagem 3" />
+                <Styles.Text>
+                  Aqui está seu roteiro de viagem. Com base nas suas
+                  preferências:
+                </Styles.Text>
+                {data.map((item: ResumeList, idx: number) => (
+                  <>
+                    <Styles.Text
+                      style={{ marginTop: 48 }}
+                    >{`DIA ${sanitizeNumber(idx + 1)}`}</Styles.Text>
 
-                  {item.resume.map((res: string) => (
-                    <Styles.Text key={uniqueId()}>{res}</Styles.Text>
-                  ))}
-                </>
-              ))}
-            </Styles.ModalContent>
-          </Styles.ModalContainer>
-        </Dialog.Content>
+                    {item.resume.map((res: string) => (
+                      <Styles.Text key={uniqueId()}>{res}</Styles.Text>
+                    ))}
+                  </>
+                ))}
+              </Styles.ModalContent>
+            </Styles.ModalContainer>
+          </Dialog.Content>
+        </Styles.Dialog>
       </Dialog.Root>
     </>
   );

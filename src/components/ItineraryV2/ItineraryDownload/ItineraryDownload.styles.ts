@@ -12,6 +12,12 @@ export const Container = styled.div`
   background-position: center;
   overflow: auto;
   position: relative;
+
+  #radix-:r0 {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
 `;
 
 export const Title = styled.h1`
@@ -81,10 +87,6 @@ export const ButtonDownload = styled.div`
     font-weight: 500;
     line-height: 24px;
   }
-
-  :hover {
-    background-image: url(${BackgroundImageBtnHover});
-  }
 `;
 
 export const SubTitleFooter = styled.h4`
@@ -112,6 +114,10 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 90vh;
   padding: 0 48px 48px 48px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 0 16px;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -124,6 +130,10 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${"@media only screen and (max-width:819px)"} {
+    min-height: auto;
+  }
 `;
 
 export const Text = styled.div`
@@ -134,6 +144,12 @@ export const Text = styled.div`
   font-family: Roboto;
   line-height: 32px;
   letter-spacing: 0.3px;
+  margin-top: 48px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    margin-top: 16px;
+    font-size: 20px;
+  }
 `;
 
 export const ModalActions = styled.div`
@@ -143,6 +159,11 @@ export const ModalActions = styled.div`
   margin-top: 48px;
   padding: 0 50px;
   padding-bottom: 64px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 16px;
+    margin: 0;
+  }
 `;
 
 export const Button = styled.button`
@@ -170,5 +191,27 @@ export const Button = styled.button`
     background: #f5f5f5;
     color: #c1c1c1;
     border: none;
+  }
+
+  ${"@media only screen and (max-width:819px)"} {
+    width: 185px;
+  }
+`;
+
+export const Dialog = styled.div`
+  ${"@media only screen and (max-width:819px)"} {
+    .dialog-content {
+      width: 100%;
+      margin: 0;
+      height: 100vh;
+    }
+  }
+`;
+
+export const ImgModal = styled.img`
+  margin-top: 74px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    margin-top: 24px;
   }
 `;

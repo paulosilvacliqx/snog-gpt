@@ -68,23 +68,16 @@ export const ItineraryResume = () => {
 
     let resumeItem: ResumeList = { title: "", resume: [] };
     resumeItem.resume = [];
-    console.log("messageSplit", messageSplit);
     messageSplit.forEach((item) => {
-      console.log("item", item);
-
       if (item.includes("Dia")) {
         resumeItem = { title: "", resume: [] };
         const itemSplit = item.split("\n");
-        console.log("itemSplit", itemSplit);
         itemSplit.forEach((day, idx) => {
-          console.log("day", day);
-
           if (idx !== 0) {
             resumeItem.resume.push(day.replace("-", ""));
           }
         });
         newData.push(resumeItem);
-        console.log("resumeItem", resumeItem);
       }
     });
     setData(newData);
