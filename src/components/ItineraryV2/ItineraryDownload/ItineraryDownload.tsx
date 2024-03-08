@@ -27,7 +27,7 @@ export const ItineraryDownload = () => {
 
   useEffect(() => {
     if (!itineraryData.content) {
-      navigate("/");
+      // navigate("/");
     }
   }, []);
 
