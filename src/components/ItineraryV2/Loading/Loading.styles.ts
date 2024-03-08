@@ -15,6 +15,14 @@ export const Title = styled.h1`
   color: #2b0e03;
   line-height: 1.1;
   margin-bottom: 48px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+
+    br {
+      display: none;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -27,4 +35,15 @@ export const Content = styled.div`
 
 export const LoadingWrapper = styled.div`
   height: 30px;
+`;
+
+export const Action = styled.div`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 32px 24px;
+  }
 `;

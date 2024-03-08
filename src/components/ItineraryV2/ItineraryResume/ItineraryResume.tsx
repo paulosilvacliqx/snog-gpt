@@ -18,10 +18,12 @@ import Tangram12 from "../assets/resume/tangram-12.png";
 import Tangram13 from "../assets/resume/tangram-13.png";
 import Tangram14 from "../assets/resume/tangram-14.png";
 import Tangram15 from "../assets/resume/tangram-15.png";
+
 import { ItineraryContext } from "../../../contexts/ContextsFiles/Itinerary";
 import { Button } from "../Button/Button";
 import { saveItineraryByUser } from "../../../services/Itineraries/service";
 import { SaveItinerary } from "../../../services/Itineraries/type";
+import { Modal } from "./Modal";
 
 const tangramIconList: any = [
   Tangram1,
@@ -51,37 +53,14 @@ export const ItineraryResume = () => {
   const { itineraryDataResponse, itineraryData } = useContext(ItineraryContext);
   const [data, setData] = useState<ResumeList[]>([]);
   const [error, setError] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedResume, setSelectedResume] = useState<any>(null);
 
   useEffect(() => {
     if (!itineraryData.content) {
       navigate("/");
     }
   }, []);
-
-  const format1 = () => {
-    const messageSplit = itineraryDataResponse.message.content.split("\n\n");
-    const newData: ResumeList[] = [];
-
-    let resumeItem: ResumeList = { title: "", resume: [] };
-    resumeItem.resume = [];
-    messageSplit.forEach((item) => {
-      if (item.includes("Dia")) {
-        if (resumeItem.title) {
-          newData.push(resumeItem);
-          resumeItem = { title: "", resume: [] };
-          resumeItem.resume = [];
-          resumeItem.title = item;
-        } else {
-          resumeItem.title = item;
-        }
-      }
-      if (!item.includes("Dia")) {
-        resumeItem.resume.push(item);
-      }
-    });
-
-    setData(newData);
-  };
 
   const format2 = () => {
     const messageSplit = itineraryDataResponse.message.content.split("\n\n");
@@ -145,48 +124,88 @@ export const ItineraryResume = () => {
   };
 
   return (
-    <Styles.Container>
-      <Header
-        handleBack={() => navigate("/roteiro/passo-4")}
-        btnLabel="Voltar"
-      />
-      <Styles.Content>
-        <Styles.WrapperTitle>
-          <Styles.Title>Meu roteiro inteligente</Styles.Title>
-        </Styles.WrapperTitle>
-      </Styles.Content>
-      <Styles.WrapperResumeContent>
-        <Styles.ResumeContent>
-          {data.map((item: ResumeList, idx: number) => (
-            <Styles.WrapperBar key={uniqueId()}>
-              <Styles.BarWrapper idx={idx}>
-                <Styles.Bar idx={idx} />
-                <Styles.Img src={tangramIconList[checkTangramIconIdx(idx)]} />
-                <Styles.Background />
-                <Styles.Label>{`DIA ${sanitizeNumber(idx + 1)}`}</Styles.Label>
-                <Styles.LabelHover>{`DIA ${sanitizeNumber(
-                  idx + 1
-                )}`}</Styles.LabelHover>
-                <Styles.BackgroundHover />
-                <Styles.Resume>
-                  {item.resume.map((res: string) => (
-                    <li key={uniqueId()}>{res}</li>
-                  ))}
-                </Styles.Resume>
-              </Styles.BarWrapper>
-            </Styles.WrapperBar>
-          ))}
-        </Styles.ResumeContent>
-      </Styles.WrapperResumeContent>
-      <Styles.Actions>
-        <Button
-          style={{ marginRight: 24 }}
-          onClick={() => navigate("/roteiro/adjust")}
+    <>
+      {!openModal && (
+        <Styles.Container>
+          <Header
+            handleBack={() => navigate("/roteiro/passo-4")}
+            btnLabel="Voltar"
+          />
+          <Styles.Content>
+            <Styles.WrapperTitle>
+              <Styles.Title>Meu roteiro inteligente</Styles.Title>
+            </Styles.WrapperTitle>
+          </Styles.Content>
+          <Styles.WrapperResumeContent>
+            <Styles.ResumeContent>
+              {data.map((item: ResumeList, idx: number) => (
+                <Styles.WrapperBar key={uniqueId()}>
+                  <Styles.BarWrapper idx={idx}>
+                    <Styles.Bar idx={idx} />
+                    <Styles.Img
+                      src={tangramIconList[checkTangramIconIdx(idx)]}
+                    />
+                    <Styles.Background />
+                    <Styles.Label>{`DIA ${sanitizeNumber(
+                      idx + 1
+                    )}`}</Styles.Label>
+                    <Styles.LabelHover>{`DIA ${sanitizeNumber(
+                      idx + 1
+                    )}`}</Styles.LabelHover>
+                    <Styles.BackgroundHover />
+                    <Styles.Resume>
+                      {item.resume.map((res: string) => (
+                        <li key={uniqueId()}>{res}</li>
+                      ))}
+                    </Styles.Resume>
+                  </Styles.BarWrapper>
+                </Styles.WrapperBar>
+              ))}
+            </Styles.ResumeContent>
+          </Styles.WrapperResumeContent>
+          <Styles.WrapperResumeContentMobile>
+            {data.map((item: ResumeList, idx: number) => (
+              <Styles.WrapperButton
+                key={uniqueId()}
+                onClick={() => {
+                  setSelectedResume({ idx: idx, item: item });
+                  setOpenModal(true);
+                }}
+              >
+                <Styles.ItemButton idx={idx} />
+                <div id="label">{`DIA ${sanitizeNumber(idx + 1)}`}</div>
+                <Styles.ImgMobile
+                  id="img"
+                  src={tangramIconList[checkTangramIconIdx(idx)]}
+                />
+                <Styles.Gradient />
+              </Styles.WrapperButton>
+            ))}
+          </Styles.WrapperResumeContentMobile>
+
+          <Styles.Actions>
+            <Button
+              style={{ marginRight: 24 }}
+              onClick={() => navigate("/roteiro/adjust")}
+            >
+              Ajustar
+            </Button>
+            <Button onClick={handleSave}>Finalizar</Button>
+          </Styles.Actions>
+        </Styles.Container>
+      )}
+      {openModal && selectedResume && (
+        <Modal
+          text={selectedResume.item}
+          idx={selectedResume.idx}
+          day={`Dia ${sanitizeNumber(selectedResume.idx + 1)}`}
+          onClose={() => setOpenModal(false)}
         >
-          Ajustar
-        </Button>
-        <Button onClick={handleSave}>Finalizar</Button>
-      </Styles.Actions>
-    </Styles.Container>
+          <Styles.ImgMobile
+            src={tangramIconList[checkTangramIconIdx(selectedResume.idx)]}
+          />
+        </Modal>
+      )}
+    </>
   );
 };

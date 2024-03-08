@@ -52,8 +52,6 @@ export const Loading = () => {
     setItineraryData,
   } = useContext(ItineraryContext);
 
-  console.log("itineraryData", itineraryData);
-
   const [counter, setCounter] = useState(0);
   const [error, setError] = useState(false);
 
@@ -121,7 +119,11 @@ export const Loading = () => {
           <Styles.LoadingWrapper>
             <img src={images[counter]} />
           </Styles.LoadingWrapper>
-        )) || <Button onClick={() => navigate("/")}>Tentar Novamente</Button>}
+        )) || (
+          <Styles.Action>
+            <Button onClick={() => navigate("/")}>Tentar Novamente</Button>
+          </Styles.Action>
+        )}
       </Styles.Content>
     </Styles.Container>
   );

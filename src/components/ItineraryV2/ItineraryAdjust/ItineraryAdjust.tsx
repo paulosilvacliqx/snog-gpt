@@ -24,29 +24,31 @@ export const ItineraryAdjust = () => {
 
   return (
     <Styles.Container>
-      <Header
-        handleBack={() => navigate("/roteiro/resume")}
-        btnLabel="Voltar"
-      />
-      <Styles.Title>VAMOS AJUSTAR</Styles.Title>
-      <Styles.Content>
-        <Styles.Subtitle>
-          Para editar seu roteiro você pode falar “Faça um roteiro com mais
-          restaurantes” ou “Quero mudar o mês para outubro” ou “Não quero viajar
-          para o Brasil e sim para Paris”. Lembre de ser claro para que o Chat
-          GPT entenda o que você deseja
-        </Styles.Subtitle>
+      <div>
+        <Header
+          handleBack={() => navigate("/roteiro/resume")}
+          btnLabel="Voltar"
+        />
+        <Styles.Title>VAMOS AJUSTAR</Styles.Title>
+        <Styles.Content>
+          <Styles.Subtitle>
+            Para editar seu roteiro você pode falar “Faça um roteiro com mais
+            restaurantes” ou “Quero mudar o mês para outubro” ou “Não quero
+            viajar para o Brasil e sim para Paris”. Lembre de ser claro para que
+            o Chat GPT entenda o que você deseja
+          </Styles.Subtitle>
 
-        <Styles.WrapperInput>
-          <Styles.Line />
-          <Textarea
-            placeholder="Escreva aqui..."
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <Styles.Line />
-        </Styles.WrapperInput>
-      </Styles.Content>
+          <Styles.WrapperInput>
+            <Styles.Line />
+            <Textarea
+              placeholder="Escreva aqui..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <Styles.Line />
+          </Styles.WrapperInput>
+        </Styles.Content>
+      </div>
       {value && (
         <Styles.Action>
           <Button onClick={handleSubmit}>Continuar</Button>

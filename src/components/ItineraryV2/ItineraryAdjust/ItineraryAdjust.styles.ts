@@ -11,6 +11,13 @@ export const Container = styled.div`
   background-attachment: fixed;
   background-position: center;
   padding: 30px 0;
+
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 export const Title = styled.h1`
@@ -21,6 +28,11 @@ export const Title = styled.h1`
   text-align: center;
   color: #2b0e03;
   margin-top: 10px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 32px;
+    margin-top: 20px;
+  }
 `;
 
 export const Subtitle = styled.div`
@@ -30,6 +42,11 @@ export const Subtitle = styled.div`
   text-align: center;
   max-width: 800px;
   margin-top: 24px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    font-size: 18px;
+    padding: 0 24px;
+  }
 `;
 
 export const Content = styled.div`
@@ -52,6 +69,10 @@ export const Line = styled.div`
   height: 1px;
   width: 15%;
   margin-top: 15px;
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: none;
+  }
 `;
 
 export const Action = styled.div`
@@ -59,6 +80,9 @@ export const Action = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  ${"@media only screen and (max-width:819px)"} {
+    padding: 32px 24px;
+  }
 `;
 
 export const Input = styled.input`
