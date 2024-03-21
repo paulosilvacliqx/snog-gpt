@@ -330,7 +330,7 @@ export const Actions = styled.div`
 `;
 
 export const WrapperResumeContentMobile = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 100%;
   height: 60vh;
@@ -356,6 +356,10 @@ export const WrapperResumeContentMobile = styled.div`
 
   button {
     filter: grayscale(100%);
+  }
+
+  ${"@media only screen and (max-width:819px)"} {
+    display: flex;
   }
 `;
 
@@ -498,13 +502,7 @@ export const ModalHeaderText = styled.div`
   letter-spacing: 0.4px;
 `;
 
-export const ModalText = styled.div`
-  color: rgb(238, 236, 244);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 0.3px;
+export const ModalTextWrapper = styled.div`
   position: absolute;
   z-index: 10;
   right: 16px;
@@ -514,4 +512,17 @@ export const ModalText = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
+`;
+
+export const ModalText = styled.div`
+  color: rgb(238, 236, 244);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.3px;
+
+  li {
+    margin-top: 15px;
+  }
 `;

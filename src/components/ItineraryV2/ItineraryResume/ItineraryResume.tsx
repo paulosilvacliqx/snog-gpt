@@ -171,6 +171,7 @@ export const ItineraryResume = () => {
                   id="img"
                   src={tangramIconList[checkTangramIconIdx(idx)]}
                 />
+
                 <Styles.Gradient />
               </Styles.WrapperButton>
             ))}
@@ -189,7 +190,9 @@ export const ItineraryResume = () => {
       )}
       {openModal && selectedResume && (
         <Modal
-          text={selectedResume.item}
+          text={selectedResume.item.resume.map((res: string) => (
+            <li key={uniqueId()}>{res}</li>
+          ))}
           idx={selectedResume.idx}
           day={`Dia ${sanitizeNumber(selectedResume.idx + 1)}`}
           onClose={() => setOpenModal(false)}

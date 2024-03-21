@@ -26,7 +26,9 @@ export const Modal: FC<Props> = ({
       <Styles.ModalHeaderWrapper>
         <Styles.ModalHeaderText>{day}</Styles.ModalHeaderText>
       </Styles.ModalHeaderWrapper>
-      <Styles.ModalText>{text}</Styles.ModalText>
+      <Styles.ModalTextWrapper>
+        <Styles.ModalText>{text}</Styles.ModalText>
+      </Styles.ModalTextWrapper>
       <Styles.Footer>
         <span>{label}</span>
         <button onClick={onClose}>Fechar</button>
